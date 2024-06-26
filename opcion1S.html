@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Has Ganado!</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1 id="titulo_final"></h1>
+    </header>
+    <div class="container">
+        <img src="https://i.pinimg.com/originals/57/f2/51/57f25101a51765e5e03c4176dd5118ca.gif" 
+            height="200px" style="text-align: center;" alt="Gato ganador" id="ganador-gif" >
+        <h2 id="resultFinal">Text default</h2>
+        <button onclick="compartirTexto()">Hazme saber tu respuesta </button>
+    </div>
+
+    <script>
+
+        function getParamsFinal(){
+            const params = new URLSearchParams(window.location.search);
+
+            return{
+                value1: params.get("textFinal"),
+                value2: params.get("optFinal")
+            };
+        }
+
+    const {value1,value2} = getParamsFinal();
+
+    document.getElementById("titulo_final").innerText = value1 + "🥰";
+    document.getElementById("resultFinal").innerText = value2 + "😘";
+    
+    function compartirTexto() {
+        var texto = "Te lo hare saber enseguida";
+        // Intenta abrir una ventana para compartir texto
+        if (navigator.share) {
+            navigator.share({
+                title: 'Acabo de escojer arduamente ',
+                text: texto,
+            })
+            .then(() => console.log('Texto compartido exitosamente.'))
+            .catch((error) => console.error('Error al compartir:', error));
+        } else {
+            // Si el navegador no admite la API de compartir, muestra un mensaje de alerta
+            alert("Tu navegador no soporta la función de compartir.");
+        }
+    }
+
+    </script>
+</body>
+</html>

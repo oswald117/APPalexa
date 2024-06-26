@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opción 1</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="container">
+        <h2 id="texto_titulo"></h2>
+        <img src=" " alt="Gato" id="imagen" height="200px" style="text-align: center;">
+        <button class="jump" id="button_1" onclick="redirectToNewPage()">Chi &#129312</button>
+        <button id="button_2" onclick="funButton()" >Ño &#128546</button>
+    </div>
+</body>
+<script>
+
+    function getParams(){
+        const params = new URLSearchParams(window.location.search);
+
+        return{
+            value1: params.get("img"),
+            value2: params.get("text"),
+            value3: params.get('opt')
+        };
+    }
+
+    const {value1,value2,value3} = getParams();
+    document.getElementById("texto_titulo").innerText = value2 + "🥰";
+    document.getElementById("imagen").src = value1;
+
+    let frases = ["no seas qlo ","di que si","aqui no es"
+                        ,"no des click aqui","click aqui si eres gey"
+                        ,"dale en si","es en el otro boton","no te cansas?","No puedo Martha",""];
+
+    let frases2 = ["aqui si","aqui chula","Mejor adentro que afuera","da click aqui si amas a los perritos"
+    ,"click aqui para ver fotos de los bts desnudos omg !!!!!","Heeeeeeey","aqui qlera"];                    
+
+
+    function funButton(){
+        const {value1,value2,value3} = getParams();
+
+        switch(value3){
+            case "1":
+                moveButton();
+                break;
+            case "2":
+                resizeButtons("button_1","button_2");
+                break;
+            case "3":
+                moveButton();
+                break;
+            case "4":
+                ocultarBoton();
+                break;
+            case "5":
+                resizeButtons("button_1","button_2");
+                break;
+        }
+    }
+
+    function moveButton() {
+        var button = document.getElementById('button_2'); // Seleccionar el botón por su ID
+        var container = document.querySelector('.container');
+        
+        var randomX = Math.floor(Math.random() * (container.clientWidth - button.clientWidth) +10);
+        var randomY = Math.floor(Math.random() * (container.clientHeight - button.clientHeight)+ 10);
+        
+        button.style.position = 'absolute';
+        button.style.left = randomX + 'px';
+        button.style.top = randomY + 'px';
+
+        randomPhrase();
+    }
+
+
+    function ocultarBoton() {
+        var button2 = document.getElementById('button_2');
+        button2.style.display = 'none'; // Oculta el botón 2
+        var button1 = document.getElementById('button_1');
+
+        document.getElementById("button_1").innerText = frases2[Math.floor(Math.random() * 6) + 1] + "😻";
+        var currentSize = parseFloat(window.getComputedStyle(button1).fontSize);
+        var newSize = currentSize * 1.9; // Aumentar el tamaño en un 90%
+        increasedButton.style.fontSize = newSize + 'px';
+
+        
+    }
+
+    function resizeButtons(increment,decrease) {
+        
+        var increaseButton = document.getElementById(decrease);
+        var increasedButton = document.getElementById(increment);
+
+        // Incrementa exponencialmente el tamaño del boton siguiente
+        var currentSize = parseFloat(window.getComputedStyle(increasedButton).fontSize);
+        var newSize = currentSize * 1.7; // Aumentar el tamaño en un 70%
+        increasedButton.style.fontSize = newSize + 'px';
+
+        // Disminuye exponencialmente el tamaño del boton actual
+        currentSize = parseFloat(window.getComputedStyle(increaseButton).fontSize);
+        newSize = currentSize * 0.5; // Disminuir el tamaño a la mitad
+        increaseButton.style.fontSize = newSize + 'px';
+
+        randomPhrase();
+    }
+    function randomPhrase(){
+        var randomNumber = Math.floor(Math.random() * 8) + 1;
+        var randomNumber2 = Math.floor(Math.random() * 6) + 1
+        document.getElementById("button_2").innerText = frases[randomNumber] + "👀";
+        document.getElementById("button_1").innerText = frases2[randomNumber2] + "😻";
+    }
+
+    let textFinal = null;
+    let optFinal = null;
+    function redirectToNewPage() {
+        
+        const {value1,value2,value3} = getParams();
+
+        switch (value3){
+            case "1":
+                textFinal = "Preparate para los besitos ";
+                optFinal = "No sera por el chiquito pero si con mucho amor ";
+                window.location.href = `opcion1S.html?textFinal=${encodeURIComponent(textFinal)}&optFinal=${encodeURIComponent(optFinal)}`;
+                break;
+            case "2":
+                textFinal = "Preparate para los vergazos con Batman ";
+                optFinal = "Tu seras mi robin y yo la verganza ";
+                window.location.href = `opcion1S.html?textFinal=${encodeURIComponent(textFinal)}&optFinal=${encodeURIComponent(optFinal)}`;
+                break;
+            case "3":
+                textFinal = "Preparate para el chisme ";
+                optFinal = "Sere todo oidos y como una amiga chismosa alv ";
+                window.location.href = `opcion1S.html?textFinal=${encodeURIComponent(textFinal)}&optFinal=${encodeURIComponent(optFinal)}`;
+                break;
+            case "4":
+                textFinal = "Yo pongo las palomitas tu pon la cola ";
+                optFinal = "Veremos tu peli favorita y a la vez nos daremos besitos ";
+                window.location.href = `opcion1S.html?textFinal=${encodeURIComponent(textFinal)}&optFinal=${encodeURIComponent(optFinal)}`;
+                break;
+            case "5":
+                textFinal = "Tu di el plan yo te sigo al infinito y más alla ";
+                optFinal = "Tu di rana y yo salto ";
+                window.location.href = `opcion1S.html?textFinal=${encodeURIComponent(textFinal)}&optFinal=${encodeURIComponent(optFinal)}`;
+                break;      
+        }
+
+    }
+
+</script>
+</html>
