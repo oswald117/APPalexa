@@ -6,10 +6,58 @@ body {
 }
 
 header {
-     background-color: #ff6b6b; /* Color de fondo del header */
+    background-color: #ff6b6b; /* Color de fondo del header */
     color: #fff; /* Color del texto del header */
     padding: 20px;
     text-align: center;
+}
+.error-message{
+    background-color: white;
+    color: red;
+}
+.form-container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    width: auto;
+    box-sizing: border-box;
+}
+#form {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #f29b9e;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+input[type="submit"]:hover {
+    background-color: #d9787b;
 }
 
 .container {
